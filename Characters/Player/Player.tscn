@@ -1,10 +1,15 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Characters/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Characters/Player/FiniteStateMachine.gd" type="Script" id=3]
 [ext_resource path="res://Art/v1.1 dungeon crawler 16x16 pixel pack/heroes/knight/knight_idle_spritesheet.png" type="Texture" id=4]
 [ext_resource path="res://Art/v1.1 dungeon crawler 16x16 pixel pack/heroes/knight/knight_run_spritesheet.png" type="Texture" id=5]
+[ext_resource path="res://Art/v1.1 dungeon crawler 16x16 pixel pack/heroes/knight/weapon_sword_1.png" type="Texture" id=6]
+[ext_resource path="res://Characters/Hitbox.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 4.5, 5 )
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
@@ -158,6 +163,10 @@ script = ExtResource( 2 )
 [node name="FiniteStateMachine" parent="." index="0"]
 script = ExtResource( 3 )
 
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 0.5, 0 )
+shape = SubResource( 17 )
+
 [node name="AnimatedSprite" parent="." index="2"]
 frames = SubResource( 13 )
 animation = "move"
@@ -166,3 +175,14 @@ animation = "move"
 anims/RESET = SubResource( 14 )
 anims/idle = SubResource( 15 )
 anims/move = SubResource( 16 )
+
+[node name="Node2D" type="Node2D" parent="." index="4"]
+
+[node name="Sprite" type="Sprite" parent="Node2D" index="0"]
+position = Vector2( 1, -11 )
+rotation = 3.92699
+texture = ExtResource( 6 )
+
+[node name="Hitbox" type="Area2D" parent="Node2D/Sprite" index="0"]
+position = Vector2( 3, -2 )
+script = ExtResource( 7 )
