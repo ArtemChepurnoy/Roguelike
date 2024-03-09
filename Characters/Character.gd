@@ -2,9 +2,11 @@ extends KinematicBody2D
 class_name Character, "res://Art/v1.1 dungeon crawler 16x16 pixel pack/heroes/knight/knight_idle_anim_f0.png"
 
 onready var animated_sprite: AnimatedSprite = get_node("AnimatedSprite")
+onready var state_machine: Node = get_node("FiniteStateMachine")
 
+const FRICTION: float = 0.1
 
-const FRICTION: float = 0.2
+export(int) var hp: int = 2
 
 var move_direction: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO
@@ -19,3 +21,14 @@ func move() -> void:
 func _physics_process(delta: float) -> void:
 	velocity = move_and_slide(velocity)
 	velocity = lerp(velocity, Vector2.ZERO, FRICTION)
+
+func take_damage(dam: int, dir: Vector2, force: int) -> void:
+	hp -= dam
+	if hp > 0:
+		state_machine.set_state(state_machine.states.hurt)
+		velocity += dir * force
+	else:
+		state_machine.set_state(state_machine.states.dead)
+		velocity += dir * force * 2
+
+	

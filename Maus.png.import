@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/МЫЫЫШЬ (1).png-fe946e8af59e93cf390c5074f578a66b.stex"
+path="res://.import/Maus.png-cd87294f8112f02cfc716eb644e54f00.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://МЫЫЫШЬ (1).png"
-dest_files=[ "res://.import/МЫЫЫШЬ (1).png-fe946e8af59e93cf390c5074f578a66b.stex" ]
+source_file="res://Maus.png"
+dest_files=[ "res://.import/Maus.png-cd87294f8112f02cfc716eb644e54f00.stex" ]
 
 [params]
 

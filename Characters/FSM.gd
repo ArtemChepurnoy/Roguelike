@@ -9,7 +9,6 @@ onready var parent: Character = get_parent()
 onready var animation_player: AnimationPlayer = parent.get_node("AnimationPlayer")
 
 func _add_state(new_state: String) -> void:
-	print(1)
 	states[new_state] = states.size()
 
 func _enter_state(_previous_state: int, new_state: int) -> void:
